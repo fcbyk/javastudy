@@ -1,10 +1,9 @@
 import grammar.primary.*;
 import api.primary.*;
+import grammar.question.*;
 
 public class app {
     public static void main(String[] args) {
-        basicGrammar.dataType();
-        scannerStudy.usetest();
+        simple.question19();
     }
 }
-
