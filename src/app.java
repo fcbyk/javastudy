@@ -1,7 +1,8 @@
 import grammar.questions;
+import api.struct.*;
 
 public class app {
     public static void main(String[] args) {
-        questions.question30();
+        StringStudy.case04();
     }
 }

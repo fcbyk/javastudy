@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 //Scanner类学习
 
-public class scannerStudy {
+public class ScannerStudy {
     public static void usetest(){
 
         //创建对象，其实就是申明一下，我准备开始用Scanner这个类了。
