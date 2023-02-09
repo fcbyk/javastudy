@@ -1,6 +1,6 @@
-package grammar.primary;
+package grammar;
 
-public class basicGrammar {
+public class notes {
 
     //标识符
     //程序员自己有权利命名的单词称为是标识符

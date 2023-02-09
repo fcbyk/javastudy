@@ -1,8 +1,8 @@
-package grammar.question;
+package grammar;
 import java.util.Random;
 import java.util.Scanner;
 
-public class simple {
+public class questions {
 
     //练习1
     //需求：定义5个变量记录老师的信息并打印
@@ -582,6 +582,208 @@ public class simple {
                 System.out.println("恭喜你，猜中了");
                 break;
             }
+        }
+    }
+
+    //练习24：求和
+    //需求：定义一个数组，存储1,2,3,4,5
+    //遍历数组得到每一个元素，求数组里面所有的数据和
+    public static void question24(){
+        /*定义一个数组，存储1,2,3,4,5
+        遍历数组得到每一个元素，求数组里面所有的数据和*/
+
+        //分析：
+        //1.定义一个数组，并添加数据1,2,3,4,5
+        int[] arr = {1,2,3,4,5};
+
+        //求和变量
+        int sum = 0;
+        //2.遍历数组得到每一个数据，累加求和
+        for (int i = 0; i < arr.length; i++) {
+            //i 依次表示数组里面的每一个索引
+            //arr[i] 依次表示数组里面的每一个元素
+            sum = sum + arr[i];
+        }
+
+        //当循环结束之后，sum的值就是累加之后的结果
+        System.out.println(sum);
+    }
+
+    //练习25：统计个数
+    //需求：定义一个数组，存储1,2,3,4,5,6,7,8,9,10
+    //遍历数组得到每一个元素，统计数组里面一共有多少个能被3整除的数字
+    public static void question25(){
+        //分析：
+        //1.定义一个数组 存储1,2,3,4,5,6,7,8,9,10
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        //定义一个变量，用来统计次数
+        int count = 0;
+        //2.遍历数组得到每一个元素
+        for (int i = 0; i < arr.length; i++) {
+            //i 表示数组里面的每一个索引
+            //arr[i] 表示数组里面的每一个元素
+            //3.判断当前的元素是否为3的倍数，如果是那么统计变量就需要自增一次。
+            if(arr[i] % 3 == 0){
+                // System.out.println(arr[i]);
+                count++;
+            }
+        }
+        //当循环结束之后，就表示数组里面所有的数字都判断完毕了，直接打印count即可
+        System.out.println("数组中能被3整除的数字有" + count + "个");
+    }
+
+    //练习26：变化数据
+    //需求：
+    //定义一个数组，存储1,2,3,4,5,6,7,8,9,10
+    //遍历数组得到每一个元素。
+    //要求：
+    //1，如果是奇数，则将当前数字扩大两倍
+    //2，如果是偶数，则将当前数字变成二分之一
+    public static void question26(){
+        //分析：
+        //1.定义一个数组，存1,2,3,4,5,6,7,8,9,10
+        int[] arr = {1,2,3,4,5,6,7,8,9,10};
+        //2.遍历数组得到每一个元素
+        for (int i = 0; i < arr.length; i++) {
+            //i 依次表示数组里面的每一个索引
+            //arr[i] 依次表示数组里面的每一个元素
+            //3.对每一个元素进行判断
+            if(arr[i] % 2 == 0){
+                //偶数 变成二分之一
+                arr[i] = arr[i] / 2;
+            }else{
+                //奇数 扩大两倍
+                arr[i] = arr[i] * 2;
+            }
+        }
+
+        //遍历数组
+        //一个循环尽量只做一件事情。
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
+        }
+    }
+
+    //练习27：求最值
+    //需求：求数组中的最大值
+    public static void question27(){
+        //定义数组求最大值：33,5,22,44,55
+
+        //扩展问题：
+        //1.根据求最大值的思路，自己改写一下求最小智
+        //2.为什么max要记录为arr[0],默认值不能为0吗？
+        //不能写0
+        //max的初始化值一定要是数组中的值。
+        //3.循环中开始条件一定是0吗？
+        //循环的开始条件如果为0，那么第一次循环的时候是自己跟自己比了一下，对结果没有任何影响，但是效率偏低
+        //为了提高效率，减少一次循环的次数，循环开始条件可以写1.
+
+        //1.定义数组用来存储5个值
+        int[] arr = {33,5,22,44,55};
+        //2.定义一个变量max用来存储最大值
+        //临时认为0索引的数据是最大的
+        int max = arr[0];
+        //3.循环获取数组中的每一个元素
+        //拿着每一个元素跟max进行比较
+        for (int i = 1; i < arr.length; i++) {
+            //i 索引  arr[i] 元素
+            if(arr[i] > max){
+                max = arr[i];
+            }
+        }
+        //4.当循环结束之后，max记录的就是数组中的最大值
+        System.out.println(max);//55
+    }
+
+    //练习28：统计个数
+    //需求：生成10个1~100之间的随机数存入数组。
+    //1）求出所有数据的和
+    //2）求所有数据的平均数
+    //3）统计有多少个数据比平均值小
+    public static void question28(){
+        //分析：
+        //1.定义数组
+        int[] arr = new int[10];
+        //2.把随机数存入到数组当中
+        Random r = new Random();
+
+        for (int i = 0; i < arr.length; i++) {
+            //每循环一次，就会生成一个新的随机数
+            int number = r.nextInt(100) + 1;
+            //把生成的随机数添加的数组当中
+            //数组名[索引] = 数据;
+            arr[i] = number;
+        }
+
+        // 1）求出所有数据的和
+        //定义求和变量
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            //循环得到每一个元素
+            //并把元素累加到sum当中
+            sum = sum + arr[i];
+        }
+        System.out.println("数组中所有数据的和为：" + sum);
+
+        //2）求所有数据的平均数
+        int avg = sum / arr.length;
+        System.out.println("数组中平均数为：" + avg);
+
+        //3）统计有多少个数据比平均值小
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if(arr[i] < avg){
+                count++;
+            }
+        }
+
+        //当循环结束之后，就表示我已经找到了所有的比平均数小的数据
+        System.out.println("在数组中，一共有" + count + "个数据，比平均数小");
+
+        //遍历数组，验证答案
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+
+    //练习29：交换数据
+    //需求：定义一个数组，存入1,2,3,4,5。按照要求交换索引对应的元素。
+    //交换前：1,2,3,4,5
+    //交换后：5,2,3,4,1
+    public static void question29(){
+        //1.定义数组存储数据
+        int[] arr = {1,2,3,4,5};
+        //2.利用循环去交换数据
+        for(int i = 0,j = arr.length - 1; i < j; i++,j--){
+            //交换变量i和变量j指向的元素
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+        //当循环结束之后，那么数组中的数据就实现了头尾交换
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+
+    //练习30：打乱数据
+    //需求：定义一个数组，存入1~5。要求打乱数组中所有数据的顺序。
+    public static void question30(){
+        //1.定义数组存储1~5
+        int[] arr = {1, 2, 3, 4, 5};
+        //2.循环遍历数组，从0索引开始打乱数据的顺序
+        Random r = new Random();
+        for (int i = 0; i < arr.length; i++) {
+            //生成一个随机索引
+            int randomIndex = r.nextInt(arr.length);
+            //拿着随机索引指向的元素 跟 i 指向的元素进行交换
+            int temp = arr[i];
+            arr[i] = arr[randomIndex];
+            arr[randomIndex] = temp;
+        }
+        //当循环结束之后，那么数组中所有的数据已经打乱顺序了
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
         }
     }
 }

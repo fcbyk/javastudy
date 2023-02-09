@@ -1,9 +1,7 @@
-import grammar.primary.*;
-import api.primary.*;
-import grammar.question.*;
+import grammar.questions;
 
 public class app {
     public static void main(String[] args) {
-        simple.question19();
+        questions.question30();
     }
 }
