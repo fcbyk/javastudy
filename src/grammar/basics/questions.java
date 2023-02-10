@@ -1,6 +1,10 @@
 package grammar.basics;
-import java.util.Random;
-import java.util.Scanner;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
+import java.lang.Integer;
 
 public class questions {
 
@@ -786,4 +790,152 @@ public class questions {
             System.out.print(arr[i] + " ");
         }
     }
+
+    //练习31：算法小题1
+    // 键盘录入一些1~10日之间的整数，并添加到集合中。直到集合中所有数据和超过200为止
+    public static void question31(){
+        /*
+            键盘录入一些1~10日之间的整数，并添加到集合中。直到集合中所有数据和超过200为止。
+        */
+        //1.创建一个集合用来添加整数
+        ArrayList<Integer> list = new ArrayList<>();
+        //2.键盘录入数据添加到集合中
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            System.out.println("请输入一个整数");
+            String numStr = sc.nextLine();
+            int num = Integer.parseInt(numStr);//先把异常数据先进行过滤
+            if (num < 1 || num > 100){
+                System.out.println("当前数字不在1~100的范围当中，请重新输入");
+                continue;
+            }
+            //添加到集合中//细节:
+            //num:基本数据类型
+            //集合里面的数据是Integer
+            //在添加数据的时候触发了自动装箱
+            list.add(num);
+            //统计集合中所有的数据和
+            int sum = getSum(list);
+            //对sum进行判断
+            if(sum > 200){
+                System.out.println("集合中所有的数据和已经满足要求");
+                break;
+            }
+        }
+    }
+
+    private static int getSum(ArrayList<Integer> list) {
+        int sum = 0;
+        for (int i = 0; i < list.size(); i++) {
+            //i :索引
+            //list.get(i);
+            int num = list.get(i);
+            sum = sum + num;//+=
+        }
+        return sum;
+    }
+
+    //练习32：算法小题2
+    //自己实现parseInt方法的效果，将字符串形式的数据转成整数。
+    //要求:字符串中只能是数字不能有其他字符最少一位，最多10位日不能开头
+    public static void question32(){
+        //1.定义一个字符串
+        String str = "123";
+        //2.校验字符串
+        //习惯:会先把异常数据进行过滤，剩下来就是正常的数据。
+        if (!str.matches("[1-9]\\d{0,9}")) {
+            //错误的数据
+            System.out.println("数据格式有误");
+        } else {
+            //正确的数据
+            System.out.println("数据格式正确");
+            //3.定义一个变量表示最终的结果
+            int number = 0;
+            //4.遍历字符串得到里面的每一个字符
+            for (int i = 0; i < str.length(); i++) {
+                int c = str.charAt(i) - '0';//把每一位数字放到number当中
+                number = number * 10 + c;
+            }
+            System.out.println(number);
+            System.out.println(number + 1);
+        }
+    }
+
+    //练习33：算法小题3
+    //定义一个方法自己实现toBinaryString方法的效果，将一个十进制整数转成字符串表示的二进制
+    public static String tobinarystring(int number) {//6
+        //核心逻辑:
+        //不断的去除以2，得到余数，一直到商为日就结束。
+        //还需要把余数倒着拼接起来
+
+        //定义一个StringBuilder用来拼接余数
+        StringBuilder sb = new StringBuilder();
+        //利用循环不断的除以2获取余数
+        while (true) {
+            if (number == 0) {
+                break;
+            }
+            //获取余数 %
+            int remaindar = number % 2;//倒着拼接
+            sb.insert(0, remaindar);
+            //除以2 /
+            number = number / 2;
+        }
+        return sb.toString();
+    }
+
+    //练习34：算法小题4
+    //请使用代码实现计算你活了多少天，用JDK7和JDK8两种方式完成
+    public static void question34() throws ParseException {
+        //请使用代码实现计算你活了多少天，用JDK7和JDK8两种方式完成
+        //JDK7
+        //规则:只要对时间进行计算或者判断，都需要先获取当前时间的毫秒值
+        //1.计算出生年月日的毫秒值
+        String birthday = "2000年1月1日";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+        Date date = sdf.parse(birthday);
+        long birthdayTime = date.getTime();
+        //2.获取当前时间的毫秒值
+        long todayTime = System.currentTimeMillis();
+        //3.计算间隔多少天
+        long time = todayTime - birthdayTime;
+        System.out.println(time / 1000 / 60 / 60 / 24);
+
+        //JDK8
+        LocalDate ld1 = LocalDate.of(2000, 1, 1);
+        LocalDate ld2 = LocalDate.now();
+        long days = ChronoUnit.DAYS.between(ld1, ld2);
+        System.out.println(days);
+    }
+
+    //练习35：算法小题5
+    //判断任意的一个年份是闰年还是平年要求:用JDK7和JDK8两种方式
+    //判断提示:二月有29天是闰年一年有366天是闰年
+    public static void question35(){
+        //jdk7
+        //我们可以把时间设置为2000年3月1日
+        Calendar c = Calendar.getInstance();
+        c.set(2000, 2, 1);
+        //月份的范围:0~11
+        //再把日历往前减一天
+        c.add(Calendar.DAY_OF_MONTH, -1);
+        //看当前的时间是28号还是29号?
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        System.out.println(day);
+
+        //jdk8
+        //月份的范围:1~12
+        //设定时间为2000年的3月1日
+        LocalDate ld = LocalDate.of(2001, 3, 1);
+        //把时间往前减一天
+        LocalDate ld2 = ld.minusDays(1);
+        //获取这一天是一个月中的几号
+        int day2 = ld2.getDayOfMonth();
+        System.out.println(day2);
+
+        //true:闰年
+        //false:平年
+        System.out.println(ld.isLeapYear());
+    }
+
 }
