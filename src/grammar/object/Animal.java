@@ -9,6 +9,11 @@ public class Animal {
     public Animal() {
     }
 
+    public Animal(int age, String color) {
+        this.age = age;
+        this.color = color;
+    }
+
     public Animal(String name, int age, String color) {
         this.name = name;
         this.age = age;
@@ -37,5 +42,9 @@ public class Animal {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public void eat(String something){
+        System.out.println("¶¯ÎïÔÚ³Ô" + something);
     }
 }

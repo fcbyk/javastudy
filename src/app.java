@@ -4,9 +4,10 @@ import grammar.object.*;
 
 public class app {
     public static void main(String[] args) {
-//        Student zhangsan = new Student("张三",20);
-//        System.out.println(zhangsan.getName());
-        Teacher wangwu = new Teacher();
-        wangwu.superTest();
+        Person p = new Person("老王",30);
+        Dog d = new Dog(2,"黑");
+        Cat c = new Cat(3,"灰");
+        p.keepPet(d,"骨头");
+        p.keepPet(c,"鱼");
     }
 }
