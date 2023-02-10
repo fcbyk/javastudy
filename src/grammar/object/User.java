@@ -1,6 +1,7 @@
 package grammar.object;
 
 public class User {
+    private String id;
     private String username;//用户名
     private String password;//密码
     private String email;//邮箱
@@ -18,6 +19,12 @@ public class User {
         this.email = email;
         this.gender = gender;
         this.age = age;
+    }
+
+    public User(String id, String username, String password) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
     }
 
     //get和set
@@ -64,5 +71,9 @@ public class User {
 
     public void eat(){
         System.out.println(username + "在吃饭");
+    }
+
+    public String getId() {
+        return id;
     }
 }

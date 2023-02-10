@@ -1,4 +1,4 @@
-package grammar;
+package grammar.basics;
 
 public class notes {
 

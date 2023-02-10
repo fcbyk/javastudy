@@ -2,8 +2,10 @@ package grammar.object;
 
 public class Student {
     //成员变量
+    private String id;
     private String name;
     private int age;
+    private String address;
 
     //构造方法
     public Student() {
@@ -47,6 +49,22 @@ public class Student {
 
     public int getAge() {
         return age;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     //成员方法

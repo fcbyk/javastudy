@@ -1,8 +1,8 @@
-import grammar.questions;
+import grammar.consoleProgram.*;
 import api.struct.*;
 
 public class app {
     public static void main(String[] args) {
-        StringStudy.case04();
+        StudentSystem.menu();
     }
 }
