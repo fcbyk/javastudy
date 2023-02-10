@@ -1,4 +1,4 @@
-package grammar.consoleProgram;
+package grammar.program;
 import grammar.object.Student;
 import java.util.ArrayList;
 import java.util.Scanner;
