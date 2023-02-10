@@ -1,15 +1,21 @@
 package grammar.object;
 
-public class Student {
+public class Student extends Person{
     //成员变量
     private String id;
-    private String name;
-    private int age;
     private String address;
 
     //构造方法
     public Student() {
+        // 很弱，我的兄弟很牛逼啊，我可以调用其他构造方法：Student(String name, int age, char sex)
+        this("徐干",21,'男');
         System.out.println("学生类无参构造方法");
+    }
+
+    public Student(String name, int age, char sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
     }
 
     public Student(String name) {
