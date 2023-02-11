@@ -6,7 +6,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.lang.Integer;
 
-public class questions {
+public class Questions {
 
     //练习1
     //需求：定义5个变量记录老师的信息并打印

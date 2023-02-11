@@ -1,6 +1,6 @@
 package grammar.basics;
 
-public class method {
+public class Method {
 
     //方法1
     //需求：设计一个方法可以获取两个数的较大值，数据来自于参数
